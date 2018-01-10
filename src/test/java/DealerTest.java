@@ -28,5 +28,12 @@ public class DealerTest {
         System.out.println(deck.findSpecificCard(0).getRank());
     }
 
+    @Test
+    public void canDealMultipleCards(){
+        dealer.dealMultipleCards(deck, player1, 2);
+        assertEquals(2, player1.getNumberOfCards());
+        assertEquals(50, deck.getSize());
+
+    }
 
 }
