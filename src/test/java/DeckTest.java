@@ -27,17 +27,11 @@ public class DeckTest {
 
     @Test
     public void lastCardInDeckIsKingOfDiamonds() {
-        Card card = deck.getCards(51);
+        Card card = deck.findSpecificCard(51);
         assertEquals(Suit.DIAMONDS, card.getSuit());
         assertEquals(Rank.KING, card.getRank());
     }
 
-    @Test
-    public void canDealDifferentCardsToPlayers(){
-        assertEquals(0, player1.getNumberOfCards());
-        deck.dealCards(player1);
-        assertEquals(1, player1.getNumberOfCards());
-        assertEquals(51, deck.getSize());
-    }
+
 
 }

@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class Deck {
 
@@ -28,12 +29,17 @@ public class Deck {
         return this.cards.size();
     }
 
-    public Card getCards(int index) {
+    public Card findSpecificCard(int index) {
         return cards.get(index);
     }
 
-    public void dealCards(Player player) {
-        Card card = cards.remove(0);
-        player.takeCard(card);
+
+    public void randomOrder() {
+        Collections.shuffle(this.cards);
+    }
+
+    public Card removeCard() {
+        return this.cards.remove(0);
+
     }
 }
