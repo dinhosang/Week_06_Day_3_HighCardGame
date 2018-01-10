@@ -27,4 +27,13 @@ public class Deck {
     public int getSize() {
         return this.cards.size();
     }
+
+    public Card getCards(int index) {
+        return cards.get(index);
+    }
+
+    public void dealCards(Player player) {
+        Card card = cards.remove(0);
+        player.takeCard(card);
+    }
 }
