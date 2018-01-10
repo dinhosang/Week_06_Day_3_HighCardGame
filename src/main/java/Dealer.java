@@ -1,8 +1,7 @@
 public class Dealer {
 
 
-
-    public void dealCards(Deck deck, Player player) {
+    public void dealCard(Deck deck, Player player) {
         Card card = deck.removeCard();
         player.takeCard(card);
     }

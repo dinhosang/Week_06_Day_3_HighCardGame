@@ -22,9 +22,11 @@ public class DealerTest {
     @Test
     public void canDealDifferentCardsToPlayers(){
         assertEquals(0, player1.getNumberOfCards());
-        dealer.dealCards(deck, player1);
+        dealer.dealCard(deck, player1);
         assertEquals(1, player1.getNumberOfCards());
         assertEquals(51, deck.getSize());
         System.out.println(deck.findSpecificCard(0).getRank());
     }
+
+
 }
