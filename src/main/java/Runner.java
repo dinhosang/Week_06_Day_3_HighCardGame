@@ -14,6 +14,7 @@ public class Runner {
         Boolean newOpponent;
 
         while (true) {
+            TerminalHelper.flushMacScreen();
             game = new Game();
             newPlayer = false;
             game.setupPlayer();
