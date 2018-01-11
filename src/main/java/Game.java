@@ -20,7 +20,7 @@ public class Game {
 
     public Game(){
         this.deck = new Deck();
-        this.dealer = new Dealer("Joker");
+        this.dealer = new Dealer("Hong");
         computerOpponents = new ArrayList<>();
         computerOpponents.addAll(Arrays.asList("alex", "colin", "craig", "zsolt", "john"));
         adjudicator = new Adjudicator();
@@ -61,7 +61,8 @@ public class Game {
                playerComputer = new Player(opponentNameCapitalised);
                break;
            } else {
-               System.out.println("\n" + "Please choose one of the names from the list" + "\n");
+               TerminalHelper.flushMacScreen();
+               System.out.println("Please choose one of the names from the list:" + "\n");
            }
        }
    }
@@ -69,7 +70,7 @@ public class Game {
 
     public void welcomeAndSetupReport() {
         System.out.println(String.format("Welcome to the 'Highest Card Wins' game, %s.\n", playerHuman.getName()));
-        System.out.println(String.format("Your opponent will be %s, and %s has been assigned as your dealer today.\n\n",  playerComputer.getName(), dealer.getName()));
+        System.out.println(String.format("Your opponent will be %s, and Dealer %s has been assigned as your dealer today.\n\n",  playerComputer.getName(), dealer.getName()));
         System.out.println("Press ENTER to begin.\nOr, type 'quit' and then press enter to leave the game.");
         TerminalHelper.getInput();
     }
@@ -108,11 +109,25 @@ public class Game {
 
     public void determineWinner() {
         String resultString;
-        HashMap<Player, String> adjudicationResultHash = new HashMap<>();
+        HashMap<Player, GameResultType> adjudicationResultHash;
+
         int playerHumanHandValue = this.playerHuman.getHandValue();
         int playerComputerHandValue = this.playerComputer.getHandValue();
-        System.out.println(String.format("Your hand has a value of %d, %s's hand has a value of %d.\n", playerHumanHandValue, playerComputer.getName(), playerComputerHandValue));
-        resultString = adjudicator.decideResult(this.playerHuman, this.playerComputer);
+        String opponentName = this.playerComputer.getName();
+
+        System.out.println(String.format("Your hand has a value of %d, %s's hand has a value of %d.\n", playerHumanHandValue, opponentName, playerComputerHandValue));
+
+        adjudicationResultHash = adjudicator.decideResult(this.playerHuman, this.playerComputer);
+        GameResultType playerHumanResult = adjudicationResultHash.get(this.playerHuman);
+
+        if (playerHumanResult.equals(GameResultType.DRAW)){
+            resultString = "The game is a draw!";
+        } else if (playerHumanResult.equals(GameResultType.WIN)) {
+            resultString = "You won the game!";
+        } else {
+            resultString = String.format("You lost the game, %s had a better hand.", opponentName);
+        }
+
         System.out.println(resultString);
     }
 

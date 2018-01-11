@@ -5,7 +5,7 @@ import java.util.HashMap;
 
 import static org.junit.Assert.assertEquals;
 
-public class AdjudicatorTest {
+public class GameTest {
 
 
 //    Dealer dealer;
@@ -31,15 +31,19 @@ public class AdjudicatorTest {
     }
 
     @Test
-    public void checkPlayer1Loses(){
-        String results = adjudicator.decideResult(player1, player2);
-        assertEquals("You lost the game!", results);
+    public void checkPlayer2WinsPlayer1Loses(){
+        HashMap<Player, GameResultType> results = adjudicator.decideResult(player1, player2);
+        assertEquals(GameResultType.LOSE, results.get(player1));
+        assertEquals(GameResultType.WIN, results.get(player2));
+
+
     }
 
     @Test
     public void checkGameIsADraw(){
         player1.takeCard(card3);
-        String results = adjudicator.decideResult(player1, player2);
-        assertEquals("The game is a draw!", results);
+        HashMap<Player, GameResultType> results = adjudicator.decideResult(player1, player2);
+        assertEquals(GameResultType.DRAW, results.get(player1));
+        assertEquals(GameResultType.DRAW, results.get(player2));
     }
 }

@@ -1,21 +1,23 @@
-import java.util.Collection;
 import java.util.HashMap;
 
 public class Adjudicator {
 
-    public String decideResult(Player playerHuman, Player playerComputer) {
-
-        String resultString;
-        int playerHumanHandValue = playerHuman.getHandValue();
-        int playerComputerHandValue = playerComputer.getHandValue();
-        if (playerHumanHandValue == playerComputerHandValue) {
-            resultString = "The game is a draw!";
-        } else if (playerHumanHandValue > playerComputerHandValue) {
-            resultString = "You won the game!";
+    public HashMap<Player,GameResultType> decideResult(Player player1, Player player2) {
+        HashMap<Player, GameResultType> outcome;
+        outcome = new HashMap<>();
+        if (player1.getHandValue() == player2.getHandValue()){
+            outcome.put(player1, GameResultType.DRAW);
+            outcome.put(player2, GameResultType.DRAW);
+        } else if (player1.getHandValue() > player2.getHandValue()){
+            outcome.put(player1, GameResultType.WIN);
+            outcome.put(player2, GameResultType.LOSE);
         } else {
-            resultString = "You lost the game!";
+            outcome.put(player1, GameResultType.LOSE);
+            outcome.put(player2, GameResultType.WIN);
         }
-        return resultString;
+
+        return outcome;
     }
+
 
 }
