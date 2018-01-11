@@ -13,6 +13,7 @@ public class Game {
     private Player playerHuman;
     private Player playerComputer;
     private Dealer dealer;
+    private ArrayList<String> dealerNames;
     private Deck deck;
     private ArrayList<String> computerOpponents;
     private Adjudicator adjudicator;
@@ -20,7 +21,13 @@ public class Game {
 
     public Game(){
         this.deck = new Deck();
-        this.dealer = new Dealer("Hong");
+
+        this.dealerNames = new ArrayList<>();
+        dealerNames.addAll(Arrays.asList("Hong", "Joker", "Dijkstra", "Gaunter"));
+        Collections.shuffle(dealerNames);
+
+        this.dealer = new Dealer(dealerNames.get(0));
+
         computerOpponents = new ArrayList<>();
         computerOpponents.addAll(Arrays.asList("alex", "colin", "craig", "zsolt", "john"));
         adjudicator = new Adjudicator();
@@ -70,7 +77,7 @@ public class Game {
 
     public void welcomeAndSetupReport() {
         System.out.println(String.format("Welcome to the 'Highest Card Wins' game, %s.\n", playerHuman.getName()));
-        System.out.println(String.format("Your opponent will be %s, and Dealer %s has been assigned as your dealer today.\n\n",  playerComputer.getName(), dealer.getName()));
+        System.out.println(String.format("Your opponent will be %s, and Dealer %s has been assigned as your dealer for this game.\n\n",  playerComputer.getName(), dealer.getName()));
         System.out.println("Press ENTER to begin.\nOr, type 'quit' and then press enter to leave the game.");
         TerminalHelper.getInput();
     }
