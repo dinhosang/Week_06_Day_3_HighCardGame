@@ -24,6 +24,7 @@ public class Game {
 
         this.dealerNames = new ArrayList<>();
         dealerNames.addAll(Arrays.asList("Hong", "Joker", "Dijkstra", "Gaunter"));
+        // could also this.dealerNames = new ArrayList<>(Arrays.asList("Hong", "Joker", "Dijkstra", "Gaunter"));
         Collections.shuffle(dealerNames);
 
         this.dealer = new Dealer(dealerNames.get(0));

@@ -5,7 +5,7 @@ import java.util.HashMap;
 
 import static org.junit.Assert.assertEquals;
 
-public class GameTest {
+public class AdjudicatorTest {
 
 
 //    Dealer dealer;
