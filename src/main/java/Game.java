@@ -49,9 +49,10 @@ public class Game {
                         playerHuman = new Player(playerName);
                         acceptedResponse = true;
                     }
-                }
-            TerminalHelper.flushMacScreen();
-            System.out.println("Please enter a name.\n\n");
+                } else {
+                TerminalHelper.flushMacScreen();
+                System.out.println("Please enter a name.\n\n");
+            }
         }
     }
 
@@ -76,7 +77,7 @@ public class Game {
 
 
     public void welcomeAndSetupReport() {
-        System.out.println(String.format("Welcome to the 'Highest Card Wins' game, %s.\n", playerHuman.getName()));
+        System.out.println(String.format("Welcome, %s, to 'Highest Value Hand of Cards Wins' - the game.\n", playerHuman.getName()));
         System.out.println(String.format("Your opponent will be %s, and Dealer %s has been assigned as your dealer for this game.\n\n",  playerComputer.getName(), dealer.getName()));
         System.out.println("Press ENTER to begin.\nOr, type 'quit' and then press enter to leave the game.");
         TerminalHelper.getInput();
