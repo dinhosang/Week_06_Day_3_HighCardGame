@@ -14,6 +14,7 @@ public class Runner {
         Boolean newOpponent;
 
         while (true) {
+            // flushMacScreen works in the terminal on a Mac, not on the IDE
             TerminalHelper.flushMacScreen();
             game = new Game();
             newPlayer = false;
