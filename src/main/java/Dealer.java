@@ -1,5 +1,10 @@
 public class Dealer {
 
+    String name;
+
+    public Dealer(String name){
+        this.name = name;
+    }
 
     public void dealCard(Deck deck, Player player) {
         Card card = deck.removeCard();
@@ -16,5 +21,10 @@ public class Dealer {
             player.takeCard(card);
         }
 
+    }
+
+    public String getName() {
+        String copyName = this.name;
+        return copyName;
     }
 }

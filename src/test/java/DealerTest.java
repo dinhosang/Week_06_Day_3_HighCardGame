@@ -12,9 +12,9 @@ public class DealerTest {
 
     @Before
     public void before(){
-        dealer = new Dealer();
-        player1 = new Player();
-        player2 = new Player();
+        dealer = new Dealer("The dealer");
+        player1 = new Player("Zsolt");
+        player2 = new Player("John");
         deck = new Deck();
         dealer.shuffleDeck(deck);
     }
@@ -34,6 +34,11 @@ public class DealerTest {
         assertEquals(2, player1.getNumberOfCards());
         assertEquals(50, deck.getSize());
 
+    }
+
+    @Test
+    public void canGetDealerName(){
+        assertEquals("The dealer", dealer.getName());
     }
 
 }

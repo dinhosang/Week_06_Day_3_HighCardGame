@@ -9,15 +9,15 @@ public class DeckTest {
 
 
     Deck deck;
-    Player player1;
-    Player player2;
+    Player player;
+    Dealer dealer;
 
 
     @Before
     public void before(){
         deck = new Deck();
-        player1 = new Player();
-        player2 = new Player();
+        player = new Player("Colin");
+        dealer = new Dealer("Joker");
     }
 
     @Test
@@ -32,6 +32,13 @@ public class DeckTest {
         assertEquals(Rank.KING, card.getRank());
     }
 
+    @Test
+    public void deckCanReset(){
+        dealer.dealMultipleCards(this.deck, this.player, 3);
+        assertEquals(49, deck.getSize());
+        deck.resetDeck();
+        assertEquals(52, deck.getSize());
+    }
 
 
 }

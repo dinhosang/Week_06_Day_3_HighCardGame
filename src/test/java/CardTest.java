@@ -25,21 +25,13 @@ public class CardTest {
         assertEquals(11, value);
     }
 
-//    @Test
-//    public void canGetAllSuits(){
-//        // Suit[] is saying a primitive array of suits
-//        // Suit.values() is a default method for return primitive array of
-//        // the suits in the Suit enum
-//        Suit[] suits = Suit.values();
-//        // for some reason curly braces are used to represent literal arrays, but we declare
-//        // using [], literal arrays as in literally displaying an array
-//        // for example a variable of type string is not a literal but “rosie” is
-//        Suit[] expected = {Suit.SPADES, Suit.HEARTS, Suit.CLUBS, Suit.DIAMONDS};
-//        assertEquals(4, suits.length);
-//        assertArrayEquals(expected, suits);
-//        Rank[] ranks = Rank.values();
-//        System.out.println(ranks[0]);
-//        System.out.println(suits);
-//    }
+    @Test
+    public void getRankAsString(){
+        assertEquals("King", card.getRankString());
+    }
+    @Test
+    public void getSuitAsString(){
+        assertEquals("Hearts", card.getSuitString());
+    }
 
 }

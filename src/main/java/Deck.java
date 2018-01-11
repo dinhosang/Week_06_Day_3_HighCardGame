@@ -42,4 +42,9 @@ public class Deck {
         return this.cards.remove(0);
 
     }
+
+    public void resetDeck() {
+        cards.removeAll(cards);
+        createDeck();
+    }
 }

@@ -11,7 +11,7 @@ public class PlayerTest {
 
     @Before
     public void before(){
-        player = new Player();
+        player = new Player("Robert");
         card1 = new Card(Suit.SPADES, Rank.FIVE);
         card2 = new Card(Suit.SPADES, Rank.TEN);
         player.takeCard(card1);
@@ -21,5 +21,17 @@ public class PlayerTest {
     @Test
     public void getHandValue(){
         assertEquals(15, player.getHandValue());
+    }
+
+    @Test
+    public void canGetPlayerName(){
+        assertEquals("Robert", player.getName());
+    }
+
+    @Test
+    public void canResetHand(){
+        assertEquals(2, player.getNumberOfCards());
+        player.clearHand();
+        assertEquals(0, player.getNumberOfCards());
     }
 }
